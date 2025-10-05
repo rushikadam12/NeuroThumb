@@ -72,7 +72,8 @@ def gen_img(state:ImgGenDict)->ImgGenDict:
             resp_bytes=buffer.getvalue()
             logger.info(f"Successfully generated image, bytes length: {len(resp_bytes)}")
             state["result_bytes"] = resp_bytes
-        else:
+            
+        if not resp_img:
             logger.error("Image generation failed, no candidates returned.")
             state["result_bytes"] = None
 
